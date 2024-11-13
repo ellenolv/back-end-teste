@@ -27,6 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Configurações para o JWT APAGAR DEPOIS
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=24),  # Tempo de validade do token de acesso
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),   # Tempo de validade do token de refresh
+    'ROTATE_REFRESH_TOKENS': False,                 # Se o refresh token for rotacionado
+    'BLACKLIST_AFTER_ROTATION': False,              # Se o token deve ser colocado na lista negra após ser rotacionado
+}
+
 
 # Application definition
 

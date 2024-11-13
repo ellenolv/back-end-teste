@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CustomUser
+from .models import CustomUser, Conteudo, Flashcard
 from django.contrib.auth import authenticate
 
 class UserSerializer(serializers.ModelSerializer):
@@ -26,3 +26,13 @@ class LoginSerializer(serializers.Serializer):
         if not user:
             raise serializers.ValidationError("Invalid credentials")
         return user
+
+class ConteudoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Conteudo
+        fields = ['id', 'titulo', 'descricao', 'usuario']
+
+class FlashcardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Flashcard
+        fields = ['id', 'pergunta', 'resposta', 'conteudo', 'usuario']
